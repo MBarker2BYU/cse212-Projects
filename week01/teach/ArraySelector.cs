@@ -11,6 +11,26 @@ public static class ArraySelector
 
     private static int[] ListSelector(int[] list1, int[] list2, int[] select)
     {
-        return [];
+        // If Memory is not an issue, we can use a simple approach
+        var results = new List<int>();
+
+        var pos1 = 0;
+        var pos2 = 0;
+
+        for (var i = 0; i < select.Length; i++)
+        {
+            if (select[i] == 1)
+            {
+                results.Add(list1[pos1]);
+                pos1++;
+            }
+            else
+            {
+                results.Add(list2[pos2]);
+                pos2++;
+            }
+        }
+
+        return results.ToArray();
     }
 }
