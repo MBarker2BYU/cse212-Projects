@@ -13,7 +13,18 @@ public static class Arrays
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        return []; // replace this return statement with your own
+        //Define the results array
+        var results = new double[length];
+
+        //Inner loop to populate the results array
+        for (var index = 0; index < length; index++)
+        {
+            //Populate the results array with multiples of the number
+            //Add 1 to the index to get the correct multiple
+            results[index] = number * (index + 1);
+        }
+
+        return results;
     }
 
     /// <summary>
@@ -29,5 +40,21 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+
+        //Get the count of the list
+        var count = data.Count;
+
+        //Handle edge case where amount is 0 or equal to count
+        amount = amount % count;
+
+        //Get the last 'amount' elements from the list
+        var temp = data.GetRange(count - amount, amount);
+
+        //Remove the last 'amount' elements from the list        
+        data.RemoveRange(count - amount, amount);
+
+        //Insert the elements at the beginning of the list
+        //This will effectively rotate the list to the right
+        data.InsertRange(0, temp);
     }
 }
