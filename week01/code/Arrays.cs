@@ -47,10 +47,10 @@ public static class Arrays
         //Handle edge case where amount is 0 or equal to count
         amount = amount % count;
 
-        //Get the last 'amount' elements from the list
+        //get the elements to rotate
         var temp = data.GetRange(count - amount, amount);
 
-        //Remove the last 'amount' elements from the list        
+        //remove the elements to rotate
         data.RemoveRange(count - amount, amount);
 
         //Insert the elements at the beginning of the list
