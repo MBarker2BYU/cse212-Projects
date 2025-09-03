@@ -40,11 +40,26 @@ public class TakingTurnsQueue
         else
         {
             Person person = _people.Dequeue();
-            if (person.Turns > 1)
+
+            //Flawed turn handling logic
+            //This logic does not account for infinite turns correctly
+            //It converts those with limited turns into infinite turns
+            // if (person.Turns > 1)
+            // {
+            //     person.Turns -= 1;
+            //     _people.Enqueue(person);
+            // }
+
+            // If Turns == 1, do not re-queue (this is their last turn)
+            if (person.Turns != 1)
             {
-                person.Turns -= 1;
+                // turns remaining is greater than one they do not have infinite turns.
+                if (person.Turns > 1)
+                {
+                    person.Turns -= 1; // Decrement turns only if finite
+                }
                 _people.Enqueue(person);
-            }
+            }            
 
             return person;
         }
