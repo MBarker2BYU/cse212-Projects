@@ -30,7 +30,7 @@
 
         for (int index = 1; index < _queue.Count; index++)
         {
-            //Flawed logic. This will not honor FIFO behavior.
+            //Flawed logic. The was not honoring FIFO behavior.
             //if (_queue[index].Priority >= _queue[highPriorityIndex].Priority)
 
             //The priority must be higher to update the index
@@ -40,8 +40,11 @@
 
         // Remove and return the item with the highest priority
         var value = _queue[highPriorityIndex].Value;
-        // The item was not being removed from the queue.
+
+        //Flawed logic. The dequeue was not removing the item from the queue.
         _queue.RemoveAt(highPriorityIndex);
+
+        
         return value;
     }
 
