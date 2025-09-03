@@ -10,7 +10,11 @@
         queue.Enqueue(100);
         var value = queue.Dequeue();
         Console.WriteLine(value);
-        // Defect(s) Found:
+        // Defect(s) Found: 1 - line 69 and 70
+        // Fix: Change the index from 1 to 0
+        // _queue.RemoveAt(1);
+        // to
+        // _queue.RemoveAt(0);
 
         Console.WriteLine("------------");
 
@@ -28,7 +32,11 @@
         Console.WriteLine(value);
         value = queue.Dequeue();
         Console.WriteLine(value);
-        // Defect(s) Found: 
+        // Defect(s) Found: 1 - line 61
+        // Fix: Change the insert index from 0 to the end of the list
+        // _queue.Insert(0, value);
+        // to
+        // _queue.Add(value);
 
         Console.WriteLine("------------");
 
@@ -44,7 +52,7 @@
         catch (IndexOutOfRangeException) {
             Console.WriteLine("I got the exception as expected.");
         }
-        // Defect(s) Found: 
+        // Defect(s) Found: 0
     }
 
     private readonly List<int> _queue = new();
@@ -54,7 +62,7 @@
     /// </summary>
     /// <param name="value">Integer value to add to the queue</param>
     private void Enqueue(int value) {
-        _queue.Insert(0, value);
+        _queue.Add(value);
     }
 
     /// <summary>
@@ -66,8 +74,9 @@
         if (_queue.Count <= 0)
             throw new IndexOutOfRangeException();
 
-        var value = _queue[1];
-        _queue.RemoveAt(1);
+        var value = _queue[0];
+        _queue.RemoveAt(0);
+
         return value;
     }
 }
